@@ -45,12 +45,9 @@ class MainActivity : AppCompatActivity() {
 
     fun mmashex(v: View) {
 
-        memoria = imprime_pantalla.getText().toString().toLong(radix = 16).toDouble()
+        memoria += imprime_pantalla.getText().toString().toLong(radix = 16).toDouble()
 
     }
-
-
-
 
     fun mrc(v: View) {
 
@@ -60,8 +57,21 @@ class MainActivity : AppCompatActivity() {
         } else {
             imprime_pantalla.setText(memoria.toString())
         }
+    }
+
+    fun mrchex(v: View) {
+
+        imprime_pantalla.setText(memoria.toString())
+        if (memoria.toString().substring(memoria.toString().length - 2, memoria.toString().length).equals(".0")) {
+            imprime_pantalla.setText(memoria.toString().substring(0, memoria.toString().length - 2))
+        } else {
+            imprime_pantalla.setText(memoria.toString())
+        }
+        acarreo_numero = ""
+        convierte(memoria.toInt().toString())
 
     }
+
 
     fun mc(v: View) {
         memoria = 0.0
