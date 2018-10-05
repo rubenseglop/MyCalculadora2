@@ -14,8 +14,6 @@ class MainActivity : AppCompatActivity() {
     private var resultadohex: Double = 0.0
     private var memoria: Double = 0.0
     private var punto: Boolean = false
-    private var clickoperando: Boolean = false
-    private var pantalla: Double = 0.0
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -44,6 +42,14 @@ class MainActivity : AppCompatActivity() {
         memoria += imprime_pantalla.getText().toString().toDouble()
 
     }
+
+    fun mmashex(v: View) {
+
+        memoria = imprime_pantalla.getText().toString().toLong(radix = 16).toDouble()
+
+    }
+
+
 
 
     fun mrc(v: View) {
@@ -111,6 +117,19 @@ class MainActivity : AppCompatActivity() {
         } else {
             imprime_pantalla.setText(resultado.toString())
         }
+        acarreo_numero=""
+    }
+
+    fun clearmax(v: View) {
+
+        resultado = 0.0
+        if (resultado.toString().substring(resultado.toString().length - 2, resultado.toString().length).equals(".0")) {
+            imprime_pantalla.setText(resultado.toString().substring(0, resultado.toString().length - 2))
+        } else {
+            imprime_pantalla.setText(resultado.toString())
+        }
+
+        acarreo_numero=""
     }
 
     fun igualdecimal(v: View) {
